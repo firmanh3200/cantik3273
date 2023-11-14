@@ -1,0 +1,516 @@
+<!doctype html>
+<html class="fixed">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<title>KoBoI</title>
+		<meta name="keywords" content="HTML5 Admin Template" />
+		<meta name="description" content="JSOFT Admin - Responsive HTML5 Template">
+		<meta name="author" content="JSOFT.net">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Web Fonts  -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="assets/vendor/magnific-popup/magnific-popup.css" />
+		<link rel="stylesheet" href="assets/vendor/bootstrap-datepicker/css/datepicker3.css" />
+
+		<!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href="assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+		<link rel="stylesheet" href="assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+		<link rel="stylesheet" href="assets/vendor/morris/morris.css" />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/theme.css" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/skins/default.css" />
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/theme-custom.css">
+
+		<!-- Head Libs -->
+		<script src="assets/vendor/modernizr/modernizr.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+	</head>
+	
+	<body>
+		<section class="body">
+			
+			<!-- start: header -->
+			<header class="header">
+				<div class="logo-container">
+					<a href="#" class="logo">
+						<img src="assets/images/logo.png" height="35" alt="JSOFT Admin" />
+					</a>
+					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+					</div> 
+				</div>
+			</header>
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar 
+				<aside id="sidebar-left" class="sidebar-left">
+				
+					<div class="sidebar-header">
+						<div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+							<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+						</div>
+					</div> 
+				
+					<div class="nano">
+						<div class="nano-content">
+							<nav id="menu" class="nav-main" role="navigation">
+								<ul class="nav nav-main">
+									<li class="nav-active">
+										<a href="index.html">
+											<i class="fa fa-home" aria-hidden="true"></i>
+											<span>Dashboard</span>
+										</a>
+									</li>
+									<li>
+										<a href="inflasi.html">
+											<i class="fa fa-align-center" aria-hidden="true"></i>
+											<span>Inflasi</span>
+										</a>
+									</li>
+									<li>
+										<a href="penduduk.html">
+											<i class="fa fa-female" aria-hidden="true"></i>
+											<span>Kependudukan</span>
+										</a>
+									</li>
+									<li>
+										<a href="miskin.html">
+											<i class="fa fa-male" aria-hidden="true"></i>
+											<span>Kemiskinan</span>
+										</a>
+									</li>
+									<li>
+										<a href="naker.html">
+											<i class="fa fa-tasks" aria-hidden="true"></i>
+											<span>Ketenagakerjaan</span>
+										</a>
+									</li>
+									<li>
+										<a href="ipm.html">
+											<i class="fa fa-list-alt" aria-hidden="true"></i>
+											<span>Pembangunan Manusia</span>
+										</a>
+									</li>
+									<li>
+										<a href="pdrb.html">
+											<i class="fa fa-table" aria-hidden="true"></i>
+											<span>P D R B</span>
+										</a>
+									</li>
+									<li>
+										<a href="publikasi.html">
+											<i class="fa fa-align-left" aria-hidden="true"></i>
+											<span>Publikasi</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+				
+							<hr class="separator" />
+				
+						</div>
+				
+					</div>
+				
+				</aside>
+				end: sidebar -->
+
+				<section role="main" class="container"> 
+					<header class="header">
+						<h2 class="text-center">Statistik Kelurahan Kebon Kangkung</h2>
+					</header>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="panel-group" id="accordionPrimary">
+									<div class="panel panel-accordion panel-accordion-primary">
+										<div class="panel-heading">
+											<h6 class="panel-title">
+												<a>
+													<center>Piramida Penduduk</center>
+												</a>
+											</h6>
+										</div>
+										<div>
+											<div class="panel-body">
+												<canvas id="piramida"></canvas>
+												<script>
+													var ctx = document.getElementById('piramida').getContext('2d');
+													var piramida = new Chart(ctx, {
+														type: 'horizontalBar',
+														data: {
+															labels: ['65+', '60-64', '55-59', '50-54', '45-49', '40-44', '35-39', '30-34', '25-29', '20-24', '15-19', '10-14', '5-9', '0-4'],
+															datasets: [{
+																label: 'Laki-laki',
+																data: [161, 242, 213, 239, 481, 555, 648, 708, 714, 518, 441, 464, 487, 642],
+																backgroundColor: 'rgba(54, 162, 235, 0.5)',
+																borderColor: 'rgba(54, 162, 235, 1)',
+																borderWidth: 1
+															}, {
+																label: 'Perempuan',
+																data: [652, 570, 485, 473, 482, 544, 654, 533, 537, 529, 247, 253, 219, 89].reverse(),
+																backgroundColor: 'rgba(255, 99, 132, 0.5)',
+																borderColor: 'rgba(255, 99, 132, 1)',
+																borderWidth: 1
+															}]
+														},
+														options: {
+															scales: {
+																xAxes: [{
+																	ticks: {
+																		beginAtZero: true
+																	}
+																}],
+																yAxes: [{
+																	ticks: {
+																		reverse: true
+																	}
+																}]
+															},
+															plugins: {
+																legend: {
+																	position: 'bottom',
+																}
+															}
+														}
+													});
+												</script>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="panel-group" id="accordionPrimary">
+									<div class="panel panel-accordion panel-accordion-secondary">
+										<div class="panel-heading">
+											<h6 class="panel-title">
+												<a>
+													 <center>Pendidikan Penduduk</center>
+												</a>
+											</h6>
+										</div>
+										<div>
+											<div class="panel-body">
+												<canvas id="pendidikan"></canvas>
+												<script>
+													var ctx = document.getElementById('pendidikan').getContext('2d');
+													var myChart = new Chart(ctx, {
+														type: 'bar',
+														data: {
+															labels: ['Tidak/Belum Sekolah', 'Tidak Tamat SD', 'Belum Tamat SD', 'Tamat SD', 'SLP', 'SLA', 'Akademi/Sarjana Muda', 'Sarjana'],
+															datasets: [{
+																label: 'Penduduk',
+																data: [993, 673, 2451, 2928, 2855, 1822, 716, 342],
+																backgroundColor: [
+																	'rgba(255, 99, 132, 0.2)',
+																	'rgba(54, 162, 235, 0.2)',
+																	'rgba(255, 206, 86, 0.2)',
+																	'rgba(75, 192, 192, 0.2)',
+																	'rgba(153, 102, 255, 0.2)',
+																	'rgba(255, 159, 64, 0.2)'
+																],
+																borderColor: [
+																	'rgba(255, 99, 132, 1)',
+																	'rgba(54, 162, 235, 1)',
+																	'rgba(255, 206, 86, 1)',
+																	'rgba(75, 192, 192, 1)',
+																	'rgba(153, 102, 255, 1)',
+																	'rgba(255, 159, 64, 1)'
+																],
+																borderWidth: 1
+															}]
+														},
+														options: {
+															scales: {
+																yAxes: [{
+																	ticks: {
+																		beginAtZero: true
+																	}
+																}]
+															},
+															plugins: {
+																legend: {
+																	position: 'bottom',
+																}
+															}
+														}
+													});
+												</script>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="panel-group" id="accordionPrimary">
+									<div class="panel panel-accordion panel-accordion-success">
+										<div class="panel-heading">
+											<h6 class="panel-title">
+												<a>
+													<center>Mata Pencaharian</center>
+												</a>
+											</h6>
+										</div>
+										<div>
+											<div class="panel-body">
+												<canvas id="pekerjaan"></canvas>
+												<script>
+													var ctx = document.getElementById('pekerjaan').getContext('2d');
+													var myChart = new Chart(ctx, {
+														type: 'pie',
+														data: {
+															labels: ['Pegawai Negeri', 'TNI/POLRI', 'Pegawai Swasta', 'Tani', 'Dagang', 'Pelajar', 'Mahasiswa', 'Pensiunan', 'Lain-lain'],
+															datasets: [{
+																label: 'Jiwa',
+																data: [718, 722, 2489, 80, 1088, 1039, 416, 426, 5802],
+																backgroundColor: [
+																	'rgba(255, 99, 132, 0.2)',
+																	'rgba(54, 162, 235, 0.2)',
+																	'rgba(255, 206, 86, 0.2)',
+																	'rgba(75, 192, 192, 0.2)',
+																	'rgba(153, 102, 255, 0.2)',
+																	'rgba(255, 159, 64, 0.2)'
+																],
+																borderColor: [
+																	'rgba(255, 99, 132, 1)',
+																	'rgba(54, 162, 235, 1)',
+																	'rgba(255, 206, 86, 1)',
+																	'rgba(75, 192, 192, 1)',
+																	'rgba(153, 102, 255, 1)',
+																	'rgba(255, 159, 64, 1)'
+																],
+																borderWidth: 1
+															}]
+														},
+														options: {
+															responsive: true,
+															plugins: {
+																legend: {
+																	position: 'bottom',
+																}
+															}
+														}
+													});
+												</script>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="panel-group" id="accordionSuccess">
+									<div class="panel panel-accordion panel-accordion-secondary">
+										<div class="panel-heading">
+											<h6 class="panel-title">
+												<a>
+													<center>Penduduk menurut Agama</center>
+												</a>
+											</h6>
+										</div>
+										<div>
+											<div class="panel-body">
+												<canvas id="agama"></canvas>
+												<script>
+													var ctx = document.getElementById('agama').getContext('2d');
+													var myChart = new Chart(ctx, {
+														type: 'pie',
+														data: {
+															labels: ['Islam', 'Kristen', 'Katholik', 'Hindu', 'Budha'],
+															datasets: [{
+																label: 'Penduduk',
+																data: [12595, 402, 292, 7, 7],
+																backgroundColor: [
+																	'rgba(255, 99, 132, 0.2)',
+																	'rgba(54, 162, 235, 0.2)',
+																	'rgba(255, 206, 86, 0.2)',
+																	'rgba(75, 192, 192, 0.2)',
+																	'rgba(153, 102, 255, 0.2)',
+																	'rgba(255, 159, 64, 0.2)'
+																],
+																borderColor: [
+																	'rgba(255, 99, 132, 1)',
+																	'rgba(54, 162, 235, 1)',
+																	'rgba(255, 206, 86, 1)',
+																	'rgba(75, 192, 192, 1)',
+																	'rgba(153, 102, 255, 1)',
+																	'rgba(255, 159, 64, 1)'
+																],
+																borderWidth: 1
+															}]
+														},
+														options: {
+															responsive: true,
+															plugins: {
+																legend: {
+																	position: 'bottom',
+																}
+															}
+														}
+													});
+												</script>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="panel-group" id="accordionPrimary">
+									<div class="panel panel-accordion panel-accordion-warning">
+										<div class="panel-heading">
+											<h6 class="panel-title">
+												<a>
+													<center>Migrasi Penduduk</center>
+												</a>
+											</h6>
+										</div>
+										<div>
+											<div class="panel-body">
+												<h5>Bulan September 2023</h5>
+												<table class="table">
+													<thead>
+														<tr>
+															<td>Migrasi</td>
+															<td>Laki-laki</td>
+															<td>Perempuan</td>
+															<td>Jumlah</td>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Lahir</td>
+															<td>3</td>
+															<td>1</td>
+															<td>4</td>
+														</tr>
+														<tr>
+															<td>Mati</td>
+															<td>4</td>
+															<td>0</td>
+															<td>4</td>
+														</tr>
+														<tr>
+															<td>Pindah Keluar</td>
+															<td>7</td>
+															<td>11</td>
+															<td>18</td>
+														</tr>
+														<tr>
+															<td>Pindah Masuk</td>
+															<td>15</td>
+															<td>22</td>
+															<td>37</td>
+														</tr>
+													</tbody>
+												</table>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="panel-group" id="accordionPrimary">
+									<div class="panel panel-accordion panel-accordion-secondary">
+										<div class="panel-heading">
+											<h6 class="panel-title">
+												<a>
+													<center>Penduduk Menurut RW</center>
+												</a>
+											</h6>
+										</div>
+										<div>
+											<div class="panel-body">
+												<canvas id="rw"></canvas>
+												<script>
+													var ctx = document.getElementById('rw').getContext('2d');
+													var myChart = new Chart(ctx, {
+														type: 'pie',
+														data: {
+															labels: ['RW 001', 'RW 002', 'RW 003', 'RW 004', 'RW 005', 'RW 006', 'RW 007', 'RW 008', 'RW 009', 'RW 010', 'RW 011'],
+															datasets: [{
+																label: 'Penduduk',
+																data: [1145, 1107, 1073, 1138, 1203, 1143, 1265, 1186, 1211, 1162, 1147],
+																backgroundColor: [
+																	'rgba(255, 99, 132, 0.2)',
+																	'rgba(54, 162, 235, 0.2)',
+																	'rgba(255, 206, 86, 0.2)',
+																	'rgba(75, 192, 192, 0.2)',
+																	'rgba(153, 102, 255, 0.2)',
+																	'rgba(255, 159, 64, 0.2)'
+																],
+																borderColor: [
+																	'rgba(255, 99, 132, 1)',
+																	'rgba(54, 162, 235, 1)',
+																	'rgba(255, 206, 86, 1)',
+																	'rgba(75, 192, 192, 1)',
+																	'rgba(153, 102, 255, 1)',
+																	'rgba(255, 159, 64, 1)'
+																],
+																borderWidth: 1
+															}]
+														},
+														options: {
+															responsive: true,
+															plugins: {
+																legend: {
+																	position: 'bottom',
+																}
+															}
+														}
+													});
+												</script>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</section>
+
+		<!-- Vendor -->
+		<script src="assets/vendor/jquery/jquery.js"></script>
+		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
+		<script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
+		<script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="assets/vendor/magnific-popup/magnific-popup.js"></script>
+		<script src="assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src="assets/javascripts/theme.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="assets/javascripts/theme.custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="assets/javascripts/theme.init.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+		<!-- Examples -->
+	</body>
+</html>
